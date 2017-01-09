@@ -10,7 +10,7 @@ module Kilt
   end
 
   macro embed(filename, io_name = "__kilt_io__", *args)
-    {% ext = filename.split(".").last %}
+    {% ext = filename.stringify.split(".").last %}
 
     {% if Kilt::ENGINES[ext] %}
       {{Kilt::ENGINES[ext]}}({{filename}}, {{io_name}}, {{*args}})
